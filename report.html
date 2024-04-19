@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Full report</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+                    <header id="header">
+                        <div class="inner">
+                            <!-- Buttons -->
+                            <div class="buttons align-right" style="margin-top: -4em;">
+                                <a href="index.html" class="button">Home</a>
+                                <a href="dashboard.html" class="button primary">Dashboard</a>
+                                <a href="moran.html" class="button primary">Moran's I</a>
+                                <a href="feedback.html" class="button primary">Cyclist Feedback Map</a>
+                            </div>
+                        </div>
+                    </header>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Report</h1>
+
+                            <p>The study's full report can be found below:</p>
+                            
+                            <h2>Introduction</h2>
+                            <p>In recent years, there has been a rise in the popularity of bike-sharing systems, largely due to their cost-effectiveness and sustainability. Known for their ease of use and accessibility, these programs have reshaped urban mobility choices, enhancing the viability of cycling for daily transportation (Shaheen et al., 2010). One notable example is the Divvy bike-sharing system, which has played a pivotal role in promoting urban cycling in Chicago. Since its establishment, Divvy has recorded a remarkable increase in usage, culminating in a record 5.6 million trips by 2022. This highlights the increasing appeal of bike-sharing to both locals and tourists (City of Chicago, 2023).<br>
+                            <br>
+                            This report aims to explore bike trip data from Chicago's bike-sharing system, Divvy, along with bicycle accident statistics, correlating these with socio-economic factors to provide a comprehensive overview of the city's cycling landscape. Our objective is to furnish stakeholders and decision-makers with critical insights that could inform enhancements to the bike-sharing infrastructure and promote more sustainable transportation options throughout Chicago. This analysis aims to contribute to a safer and more efficient cycling environment, aligning with broader urban planning and public health goals.
+                            </p>
+                            
+                            <h2>Background and literature review</h2>
+                            <p>Chicago is experiencing a trend towards cycling. The adoption of cycling as a form of transport in the city has grown 12 times since the 1980s (Active Transportation Alliance, 2020). The high cycling adoption and bike share culture is only expected to grow with Divvy, the main bike sharing operator in Chicago, hitting a record high of more than 5.6 million bike trips in 2022, over 60% than 2019 (City of Chicago, 2023). Looking ahead, Chicago is committed to a cycling strategy with the city investing over $17 million to expand Chicago’s bike network and Divvy intending to add 3,000 new bikes and 250 stations by 2023 (City of Chicago, 2023).</p>
+                            
+                            <p>Cycling is gaining popularity as a sustainable and healthier choice for commuting (Fraser & Lock, 2011). Beyond its health benefits, reductions in carbon emissions and traffic congestion, position it as a viable alternative to automobile-dependent transport methods (Midgey, 2009). Additionally, cycling also reduces emissions and noise levels in urban settings, contributing to a cleaner and safer transportation system (Clockston and Rojas-Rueda, 2021; Saltykova et al., 2022). Collectively, the shift towards bicycles as a preferred mode of transportation is gaining traction worldwide, propelled by its many advantages for both individuals and the environment.</p>
+                            
+                            <p>While the expansion of cycling and bike-sharing offers numerous advantages, it also faces significant challenges in terms of safety and equitable access. Research indicates that cycling infrastructure tends to be unevenly distributed, predominantly benefiting wealthier neighbourhoods, and leaving economically disadvantaged areas with insufficient access to safe cycling paths (Anaya-Boig et al. 2022; Barajas, 2021; Flanagan et al., 2016; Tortosa et al. 2021; Tortosa et al. 2022). </p>
+                            
+                            <p>Additionally, the exacerbation of accident severity due to economic disadvantages should be considered when planning cycling safety. Hyung et al (2006) found that median income has a direct impact in explaining the disparity of the access to healthcare in the event of an accident within the United States. Hence, additional measures need to be taken to improve cycling safety, with a focus on its impact in lower income regions. With Chicago ranking 161st out of 163 major cities in bike transit safety (Block Club Chicago, 2023), there is room for improvement in the city’s cycling infrastructure to promote safety and equitable access to cycling.</p>
+                            
+                            <h2>Objective and research questions</h2>
+                            <p>The study aims to explore the equitability of bike sharing trips in Chicago by studying the spatio-temporal patterns of trips taken on Divvy in Chicago, cycling-related accidents and spatial distributions of financial disadvantaged populations in Chicago. There are three research questions: </p>
+                            <ol>
+                                <li><b>Cycling Patterns of Divvy Bike Share Riders:</b> What are the spatio-temporal distributions of travel patterns among Divvy bike share users in 2023?</li>
+                                <li><b>Spatial Distribution of Cycling-Related Accidents:</b> What are the spatio-temporal distributions of cycling-related accidents in Chicago in 2023?</li>
+                                <li><b>Spatial Distribution of Disadvantage in Chicago:</b> What is the spatial distribution of the financial disadvantage, measured by median income, distributed across Chicago?</li>   <li><b>Spatial Analysis: </b> Is there a discernible spatial relationship or correlation among the travel patterns of bike share users, cycling-related accidents and the areas of disadvantage in Chicago?</li> 
+                            </ol>
+                            
+                            <p>Finally, a website featuring three web map applications will also be created to raise awareness on bike-sharing trends, insights, and provide a platform for the public to raise feedback and comments on their experiences with Chicago’s cycling infrastructure. We hope the platform will help inform decisions by policymakers, bike sharing business owners and the public alike by making visible public cycling experiences, stories and any feedback for improvement. This initiative aims to foster a more inclusive and secure cycling environment across Chicago. </p>
+                            
+                            <h2>Datasets</h2>
+                            <p>The study uses datasets obtained from the Chicago Data Portal and Divvy's Open Data website. Our study uses the latest data available for its recency and relevance to the study. This timeframe was chosen to ensure that our analysis captures the latest developments in the city's cycling scene, including the impact of Chicago’s recent expansions in bike-sharing infrastructure. Table 1 below provides a summary of various datasets used in our analysis:</p>
+                            
+                            <span class="image main"><img src="images/table1.png" alt="" /></span>
+                            
+                            <em>Divvy bike trip data</em>
+                            <p>Divvy's data provides historical insights into bike-sharing patterns, such as trip durations and trip origin and destination, enabling an analysis of cycling trends and preferences in Chicago. As part of our preprocessing to ensure reliability and accuracy of data, trip durations are calculated by deducting the trip end times with the start times. The interquartile range (IQR) method is used to perform outlier detection and removal by removing trip duration records that fall more than 1.5 times IQR above the third quartile or below the first quartile. 9.80% data points were removed in this process, leaving 3,902,225 bike trips. For trips that were missing coordinates for their origin and destinations, a spatial join was done with the Divvy Bike Station dataset to identify coordinates of trip origin and destinations based on the station name and ID. Any row with missing coordinates were then dropped. <br>
+                            <br>
+                            The data is aggregated to hexagons using Uber’s H3 hexagon grids. Three reasons for this: firstly, hexagonal gridding is agnostic and avoids the political bias that using administrative boundaries might impose. Secondly, hexagons reduce sampling bias from edge effects due to the low perimeter to area ratio of the hexagonal shape (Dharmawan et al, 2017). Thirdly, it allows data to be aggregated to a consistent grid for computation efficiency and working with data at different initial aggregations. A resolution of 9, approximately 200m in edge length, was selected to balance between the granularity needed to identify the general bike stations’ service area and aggregation of data.</p>
+                            
+                            <span class="image main"><img src="images/figure1.png" alt="" /></span>
+                            
+                            <p>The majority of Divvy bike-share trips are of short duration (Figure 1), with most rides lasting around the median value of 9 minutes and a mean of 11 minutes. The prevalence of shorter trips could suggest that the bike-share system is primarily utilized for brief, point-to-point urban travel, likely commutes or errands that are conveniently served by the dense network of bike stations in Chicago's urban core. The skew towards shorter trip durations might also reflect user preference for cycling shorter distances, possibly within the range of 1 to 3 miles, which is generally considered a comfortable biking distance for users of various fitness levels.<br>
+                            <br>
+                            Figure 2 suggests that ridership is seasonal, with higher volumes of trips of longer durations likely tied to favorable weather conditions. The mornings and evenings register the highest bike usage, particularly among Divvy members over casual riders as shown in figure 3. This information could refine service delivery, with bike allocation and maintenance tailored to meet the demand of regular commuters.</p>
+                            
+                            <span class="image main"><img src="images/figure2.png" alt="" /></span>
+                            <span class="image main"><img src="images/figure3.png" alt="" /></span>
+                            
+                            <p>Figure 4 and 5 reflects Streeter Dr & Grand Ave, Kingsbury St & Kinzie St, and Clark St & Elm St as the top three stations for both starting and ending trips. This suggests these locations are critical nodes in the city's bike-sharing network, likely due to their proximity to key destinations or transit links. These stations benefit from strategic locations within the city, providing convenient access to key destinations such as Navy Pier, River North's cultural attractions, and the upscale shopping and dining options of the Gold Coast neighborhood.</p>
+                            
+                            <span class="image main"><img src="images/figure4.png" alt="" /></span>
+                            <span class="image main"><img src="images/figure5.png" alt="" /></span>
+                            
+                            <em>Traffic Crashes - Cases Involving Cyclists Only</em>
+                            <p>The dataset on traffic crashes (Traffic Crashes - Vehicles) was processed to retain crash records involving cyclists only. Using a relational table with the unique Crash Record ID (Traffic Crashes - Crashes), location data was joined to the dataset of crashes involving cyclists to form a comprehensive dataset of relevant cycling incidences. This dataset enables an examination of cyclist incidents in Chicago, detailing frequency, locations, and the time of occurrence. The 'Crash Date' was used to obtain the month and year of occurrence and categorized the time by period of morning, afternoon, evening, and night. After removing duplicates and entries lacking geographic coordinates, 1,969 records were retained.<br> 
+                            <br>
+                            Figure 6 illustrates a notable seasonal pattern, with the number of incidents increasing steadily from the beginning of the year and peaking mid-year before declining. This peak likely coincides with the highest bicycle usage during the warmer months, which increases the probability of accidents due to higher traffic volume. The substantial drop in the later months could correlate with a decrease in cycling activity as colder weather sets in, leading to fewer riders and thus, a lower incidence of crashes.</p>
+                            
+                            <span class="image main"><img src="images/figure6.png" alt="" /></span>
+                            
+                            <p>Figure 7 indicates that most incidents occur in the late afternoon and early evening hours. This trend may correspond with the evening rush hour when roads are congested, and visibility may begin to diminish. The heightened number of crashes during these hours underscores the need for improved safety measures during peak cycling times, such as enhanced lighting, dedicated bike lanes, or increased public awareness campaigns focused on cyclist safety. Morning hours also show a considerable number of incidents, although fewer than in the evening, pointing to the morning commute as another critical period for cyclist safety initiatives.</p>
+                            
+                            <span class="image main"><img src="images/figure7.png" alt="" /></span>
+                            
+                            <p>The analysis of Divvy bike-share usage and accident data reveals a possible positive correlation: as bike trips surge during the warm months of June to September and in the evening rush hours of 3 to 7 pm, as shown in Figures 2 and 3, so too do accidents, per Figures 6 and 7. This overlap underscores a critical need for enhanced safety measures in times of peak cycling activity, calling for a strategic alignment of infrastructure development and public safety initiatives to safeguard the growing number of urban cyclists.</p>
+                            
+                            <em>Socioeconomic Indicators</em>
+                            
+                            <p>The project further enriches its analysis by considering socio-economic data for the city of Chicago. Data on median income by zip code was taken from the 2020 US Census and 2022 American Community Survey (ACS). The tabular data was spatially joined to zip code boundaries. </p>
+                            
+                            <p>Figure 8 shows a choropleth map of median income across Chicago. The highest median income of over $139,063 is located in the city centre of Chicago (along Lincoln Park and the South Side). This is accompanied by the second-highest region located along the northern neighbourhoods of Chicago ($61,490 - $105,229). Alternatively, the lowest median incomes are located within the west and south of the city ($24,912 - $61,400). This suggests a North-East and South-west income divide in the city.</p>
+                            
+                            <span class="image main"><img src="images/figure8.png" alt="" /></span>
+                            
+                            
+                            
+                            <h2>Methods</h2>
+                            
+                            <p> The workflow of our method is shown in figure 9 below.</p>
+                            
+                            <span class="image main"><img src="images/figure9.png" alt="" /></span>
+                            
+                            <p>All spatial data are projected using a Projected Coordinate System, from Geographic Coordinate System WGS84 to NAD83 UTM Zone 16N, which was chosen to better model and analyse locational data in Chicago - within the area of North America between 90°W and 84°W.</p>
+                            
+                            <h2>Results</h2>
+                            <em>Cycling Patterns of Divvy Bike Share Riders in 2023</em>
+                            
+                            <p>There is significant bike activity in the city’s central locations, near the Near North Side, the Loop, and Lincoln Park (figures 10 and 11). These central and more affluent areas benefit from the availability of attractions and amenities, as well as well-equipped cycling infrastructure that enhances safety and accessibility, making them popular hubs for both commuting and recreational biking.</p>
+                            
+                            <span class="image main"><img src="images/figure10.png" alt="" /></span>
+                            <span class="image main"><img src="images/figure11.png" alt="" /></span>
+                            
+                            <p>To assess the spatial autocorrelation of bike-share trip origins and destinations among Chicago's zip code areas, Global and Local Moran's I analyses were conducted. Queen’s contiguity defined by shared boundaries was used to define neighbours to account for the varying sizes and distance between each zip area. <br>
+                            <br>
+                            The Global Moran's I analyses yield values of 0.5545 and 0.547 (Figures 12 and 13), for origin and destination respectively, which signify a significant degree of clustering, suggesting that areas with high trip counts are not randomly distributed. Local Moran's I was further conducted to uncover localized spatial autocorrelation and identify specific zip codes where trip clustering is notable and statistically significant. To ensure robustness, we conducted 999 iterations and confirmed the non-randomness of these patterns with a 95% confidence level.</p>
+                            
+                            <span class="image main"><img src="images/figure12.png" alt="" /></span>
+                            <span class="image main"><img src="images/figure13.png" alt="" /></span>
+
+                            <p>The Local Moran's I analysis refines the earlier visual findings, identifying significant 'High-High' clusters of bike-share trip origins and destinations within specific Chicago community areas (Figures 14 and 15). Notably, Logan Square, West Town, Near West Side, Near North Side, Lake View, and Lincoln Park. This pattern confirms the high usage of bike-sharing services within the central region of Chicago. The results also reveal significant 'Low-Low' clusters, which coincide with where less affluent zip areas with lower median income are. For policy makers and bike sharing companies alike, further exploration into the reasons for low bike ridership with considerations of financial circumstances in the areas might enable more target approaches to encourage ridership and foster a more inclusive cycling ecosystem across Chicago.</p> 
+                            
+                            <span class="image main"><img src="images/figure14.png" alt="" /></span>
+                            <span class="image main"><img src="images/figure15.png" alt="" /></span>
+                            
+                            <em>Spatial Distribution of Cycling-Related Accidents in 2023</em>
+                            <p>Mapping of cyclists related traffic crashes revealed that accidents are predominantly occurring in the same high-activity bike trip areas, particularly the Near North Side, Loop, and Lincoln Park (Figure 16). The accident data also showed higher accident counts around the city centre and north-eastern sections, where more affluent areas with higher median income are. The results suggest that current bicycle infrastructure may be inadequate to cater for the high volume of bike trips in the area.</p>
+                            
+                            <span class="image main"><img src="images/figure16.png" alt="" /></span>
+                            
+                            <p>A Global Moran's I analysis confirms statistically significant spatial clustering with an index value of 0.614 (Figure 17), suggesting that these accidents are not spatially random. The Local Moran's I go further (Figure 18), showing 'High-High' clusters that stretch beyond the central bike trip hotspots and into direct neighbouring areas. This suggests that the risk of accidents is higher not only in the busiest areas for bike trips but also around them. The patterns from these analyses underscore the need for improved safety features and infrastructure not just in high activity areas but also areas leading to those areas to enhance cycling safety.</p>
+                            
+                            <span class="image main"><img src="images/figure17.png" alt="" /></span>
+                            <span class="image main"><img src="images/figure18.png" alt="" /></span>
+                            
+                            <em>Spatial Autoregressive Model (SAR)</em>
+                            <p>As the results of the global Moran’s I report that global autocorrelation is present in the dataset, a SAR model was applied to quantify the influence of median income on trip destinations, origins and bike crashes taking into account the spatial autocorrelation present in the data. The key results of the SAR are captured in table 2 below. </p>
+                            
+                            <span class="image main"><img src="images/table2.png" alt="" /></span>
+                            
+                            <p>Running the SAR model of trip destination counts with median income, the overall model has a reported p-value of 5.243e-06 that makes it statistically significant at a 99% confidence interval and allows us to reject the null hypothesis that median income has no effect on the count of trip destinations. However the reported p-value of the coefficient estimate for variable median income is not statistically significant at the 5% level of significance. This suggests that there is not enough evidence to conclude that the independent variable has a non-zero effect on the dependent variable. A similar situation is seen with the count of trip origins and bike crashes against median income. In both instances, the coefficient estimate is not statistically significant at the 5% significance level while the overall model is statistically significant at a 99% confidence interval. One possible reason for this is that the model may display signs of endogeneity with trip destinations and origins having influence on median income and vice versa. The relationship between trip destinations/ origins, accidents, and socio-economic demographics are likely more complex than modelled here. Future studies should include other predictors to better model the effects of socioeconomic variables on trip origin, destinations and bike crashes and may consider the use of simultaneous equation models to account for endogeneity effects if any.</p>
+                            
+                            <h2>Limitations</h2>
+                            
+                            <p>Firstly, the data available includes only those bike trips that were taken and recorded. This would mean that we do not have visibility into potential unmet demand due to bike availability. This could lead to an underrepresentation of actual riding demand and preferences. Secondly, while we have examined median income, a broader range of socio-economic variables could provide a more comprehensive understanding of how different factors influence bike-sharing usage. Lastly, our analysis does not account for multimodal forms of transport. For residents in outlying areas or less affluent neighbourhoods away from the city centre, the combination of cycling with other public transit options, such as the subway might be a more reasonable travel option and is holistic approach considering various forms of transport should be taken into account in an assessment of urban mobility. By not including this interplay, we may overlook the nuance value that bike-sharing adds to the larger transportation ecosystem, especially for completing 'last mile' connections.</p>
+                            
+                            <h2>Conclusion</h2>
+                            <p>Our analysis of Chicago’s Divvy bike-sharing usage and cycling-related accidents offers a spatio-temporal exploration into bike sharing trips, bike accidents and how these may be influenced by socioeconomic factors. The findings illustrate significant areas of bike-sharing activity and accident clusters, revealing opportunities for targeted action to improve the city’s overall cycling infrastructure. The relationship between trip destinations, accidents, and socio-economic demographics are likely to be more complex and require further modelling along other predictor variables. The insights gathered reinforces the role of bike-sharing as a growing and key part of a city’s urban transport and mobility efforts. These insights can guide strategic decisions to foster a safer, more equitable, and efficient cycling environment in Chicago.</p>
+                            
+                            <h2>Statement of contribution</h2>
+                            <p>All team members agree that equal effort was put into the project.</p>
+                            
+                            <h2>References</h2>
+                            <p>Alexander Kmoch, Ivan Vasilyev, Holger Virro & Evelyn Uuemaa (2022) Area and shape distortions in open-source discrete global grid systems, Big Earth Data, 6:3, 256-275, DOI: 10.1080/20964471.2022.2094926 <br> 
+                            <br>
+                            Anaya-Boig, E. Cebollada, A. and Bueno, M.C. (2022) ‘Measuring spatial inequalities in the access to station-based bike-sharing in Barcelona using an Adapted Affordability Index’, Journal of Transport Geography, 98, 103-116. <br>
+                            <br>
+                            Barajas, J. M. (2021). Biking where Black: Connecting transportation planning and infrastructure to disproportionate policing. Transportation Research Part D: Transport and Environment, 99, 103027. https://doi.org/10.1016/j.trd.2021.103027 <br>
+                            <br>
+                            Block Club Chicago. (2023). Chicago is unsafe for cyclists, report shows: 'It reflects how we're all feeling,' advocates say. Retrieved from https://blockclubchicago.org/2023/07/17/chicago-is-unsafe-for-cyclists-report-shows-it-reflects-how-were-all-feeling-advocates-say/ <br>
+                            <br>
+                            City of Chicago. (2023, December 13). Bike Routes [Dataset]. Chicago Data Portal. Retrieved from https://data.cityofchicago.org/Transportation/Bike-Routes/3w5d-sru8 <br>
+                            <br>
+                            City of Chicago. (2023, December 13). Boundaries - Community Areas (current) [Dataset]. Chicago Data Portal. Retrieved from https://data.cityofchicago.org/Facilities-Geographic-Boundaries/Boundaries-Community-Areas-current-/cauq-8yn6 <br>
+                            <br> City of Chicago. (2023, October). New Divvy Stations and Bikes Coming to Chicago as Part of Continued Expansion. Retrieved from https://www.chicago.gov/city/en/depts/cdot/provdrs/bike/news/2023/october/new-divvy-stations-and-bikes-coming-to-chicago-as-part-of-contin.html <br>
+                            <br>
+                            City of Chicago. (2024, April 6). Ped Bike Crashes by Month [Dataset]. Chicago Data Portal. Retrieved from https://data.cityofchicago.org/Transportation/Ped-Bike-Crashes-by-Month/sd9z-2f4z <br>
+                            <br>
+                            City of Chicago. (2024, April 6). Traffic Crashes - Crashes [Dataset]. Chicago Data Portal. Retrieved from https://data.cityofchicago.org/Transportation/Traffic-Crashes-Crashes/85ca-t3if/about_data <br>
+                            <br>
+                            Dharmawan, R. D., Suharyadi, & Farda, N. M. (2017). Geovisualization using hexagonal tessellation for spatiotemporal earthquake data analysis in Indonesia. In Soft Computing in Data Science: Third International Conference, SCDS 2017, Yogyakarta, Indonesia, November 27–28, 2017, Proceedings 3 (pp. 177-187). Springer Singapore.<br>
+                            <br>
+                            Flanagan, E., Lachapelle, U., & El-Geneidy, A. (2016). Riding tandem: Does cycling infrastructure investment mirror gentrification and privilege in Portland, OR, and Chicago, IL. Research in Transportation Economics, 60, 14-24.<br>
+                            <br>
+                            Fraser, S. D., & Lock, K. (2011). Cycling for transport and public health: a systematic review of the effect of the environment on cycling. The European Journal of Public Health, 21(6), 738-743.<br>
+                            <br>
+                            Huynh, P. T., Schoen, C., Osborn, R., & Holmgren, A. L. (2006). The US health care divide: disparities in primary care experiences by income. <br>
+                            <br>
+                            Midgey, P. (2009) ‘The role of smart bike-sharing systems in urban mobility’, Journeys. <br>
+                            <br>
+                            Clockston, R.L.M. and Rojas-Rueda, D. (2021) ‘Health impacts of bike sharing systems in the U.S.’, Environmental Research, 202, 111709. <br>
+                            <br>
+                            Saltykova, K., Ma, X., Yao, L. and Kong, H. (2022) ‘Environmental impact assessment of bike-sharing considering the modal shift from public transit’, Transport Research Part D: Transport and Environment, 105, 103238.<br>
+                            <br>
+                            Shaheen, S., Guzman, S., & Zhang, H. (2010). Bikesharing in Europe, the Americas, and Asia: Past, Present, and Future. Transportation Research Record: Journal of the Transportation Research Board, 2143(1), 159-167.<br>
+                            <br>
+                            Tortosa, E.V., Lovelace, R., Heinen, E. and Mann, R.P. (2021) ‘Socioeconomic inequalities in cycling safety: an analysis of cycling injury risk by residential deprivation level in England’, Journal of Transport & Health, 23, 101-120.<br>
+                            <br>
+                            Tortosa, E.V., Heinenm E. and Lovelace, R. (2022) ‘Chapter ten – cycling and socioeconomic (dis)advantage’, Advances in Transport Policy and Planning, 10, 211-233.
+</p>
+                            
+						</div>
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+            <script src="assets/js/collapse.js"></script>
+
+	</body>
+</html>
